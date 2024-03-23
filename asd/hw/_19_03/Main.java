@@ -64,6 +64,5 @@ public class Main {
 
         Vector[] v = new Vector[]{a,b,c};
         mergeSort(v);
-        printArray(v);
     }
 }
