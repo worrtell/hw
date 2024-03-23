@@ -1,8 +1,9 @@
 package java_sem2.cw._19_03;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class LinkedList<T> implements list<T>, java.lang.Iterable<T> {
+public class LinkedList<T> implements list<T>, Iterable<T> {
     private Node<T> head;
     private Node<T> cur;
     private int size;
@@ -82,25 +83,46 @@ public class LinkedList<T> implements list<T>, java.lang.Iterable<T> {
         return size;
     }
 
-    @Override
+    //@Override
     public Iterator<T> iterator() {
         return new MyIterator<T>();
     }
 
     private class MyIterator<T> implements Iterator<T> {
-
+        int cur = 0;
+        boolean next;
         @Override
         public boolean hasNext() {
-            return false;
+            if (cur < size) {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
 
         @Override
-        public T next() {
-            return null;
+        public T next() throws java.util.NoSuchElementException {
+            if (cur < size) {
+                int t = cur;
+                ++ cur;
+                next = true;
+                return (T) get(t);
+            }
+            else {
+                throw new NoSuchElementException();
+            }
         }
 
         @Override
-        public void remove() {
+        public void remove() throws IllegalStateException {
+            if (next) {
+                next = false;
+                delete(-- cur);
+            }
+            else {
+                throw new IllegalStateException();
+            }
         }
     }
 }
