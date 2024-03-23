@@ -58,9 +58,9 @@ public class Main {
         }
     }
     public static void main(String[] args) {
-        Vector a = new Vector("2,1");
-        Vector b = new Vector("1");
-        Vector c = new Vector("2,2");
+        Vector a = new Vector("1,2,3");
+        Vector b = new Vector("134");
+        Vector c = new Vector("58,2");
 
         Vector[] v = new Vector[]{a,b,c};
         mergeSort(v);
