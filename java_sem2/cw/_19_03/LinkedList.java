@@ -104,10 +104,8 @@ public class LinkedList<T> implements list<T>, Iterable<T> {
         @Override
         public T next() throws java.util.NoSuchElementException {
             if (cur < size) {
-                int t = cur;
-                ++ cur;
                 next = true;
-                return (T) get(t);
+                return (T) get(cur++);
             }
             else {
                 throw new NoSuchElementException();
